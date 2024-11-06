@@ -1,4 +1,9 @@
-# Variables
+# variables.tf
+variable "tenant_id" {
+  type        = string
+  description = "Azure tenant id"
+}
+
 variable "subscription_id" {
   type        = string
   description = "Azure subscription id"
@@ -13,7 +18,7 @@ variable "resource_group_name" {
 
 variable "location" {
   type        = string
-  description = "locations of the resources"
+  description = "Location of the resources"
   default     = "East US"
 }
 
@@ -45,4 +50,10 @@ variable "acr_name" {
   type        = string
   description = "Name of the Azure Container Registry"
   default     = "divergencia"
+}
+
+variable "key_vault_name" {
+  type        = string
+  description = "Name of the Azure Key Vault"
+  default     = "my-keyvault"
 }
