@@ -1,3 +1,105 @@
+# Lista de Comandos de Kubernetes
+
+## Autenticación y configuración
+- `az aks get-credentials --resource-group <resource-group> --name <aks-cluster>`  
+  Obtiene las credenciales de acceso al clúster AKS.
+  
+- `kubectl config view`  
+  Muestra la configuración actual de Kubernetes.
+  
+- `kubectl config current-context`  
+  Muestra el contexto actual de Kubernetes.
+
+## Información sobre el clúster
+- `kubectl cluster-info`  
+  Muestra información básica del clúster de Kubernetes.
+
+- `kubectl get nodes`  
+  Obtiene la lista de nodos del clúster.
+
+- `kubectl get namespaces`  
+  Muestra los namespaces disponibles en el clúster.
+
+- `kubectl get services`  
+  Muestra los servicios desplegados en el clúster.
+
+- `kubectl get pods`  
+  Obtiene la lista de pods que se están ejecutando.
+
+- `kubectl describe pod <pod-name>`  
+  Muestra detalles completos de un pod específico.
+
+## Manejo de Pods
+- `kubectl create -f <file>.yaml`  
+  Crea recursos a partir de un archivo YAML (pod, service, etc.).
+
+- `kubectl apply -f <file>.yaml`  
+  Aplica cambios en el clúster a partir de un archivo YAML.
+
+- `kubectl delete -f <file>.yaml`  
+  Elimina los recursos descritos en el archivo YAML.
+
+- `kubectl delete pod <pod-name>`  
+  Elimina un pod específico.
+
+- `kubectl get pod <pod-name>`  
+  Muestra información sobre un pod específico.
+
+## Logs y monitoreo
+- `kubectl logs <pod-name>`  
+  Muestra los logs de un pod específico.
+
+- `kubectl logs <pod-name> -c <container-name>`  
+  Muestra los logs de un contenedor específico dentro de un pod.
+
+- `kubectl get events`  
+  Muestra los eventos recientes en el clúster.
+
+## Configuración de servicios
+- `kubectl expose pod <pod-name> --type=LoadBalancer --name=<service-name>`  
+  Exponer un pod como un servicio de tipo LoadBalancer.
+
+- `kubectl expose deployment <deployment-name> --type=LoadBalancer --name=<service-name>`  
+  Exponer un deployment como un servicio de tipo LoadBalancer.
+
+- `kubectl get svc`  
+  Obtiene los servicios disponibles en el clúster.
+
+- `kubectl describe service <service-name>`  
+  Muestra detalles sobre un servicio específico.
+
+## Escalado y control de recursos
+- `kubectl scale deployment <deployment-name> --replicas=<num>`  
+  Escala un deployment a un número de réplicas específico.
+
+- `kubectl top pod`  
+  Muestra el uso de recursos de los pods en el clúster.
+
+## Acceso y ejecución
+- `kubectl exec -it <pod-name> -- /bin/bash`  
+  Accede al contenedor de un pod y abre una sesión interactiva de bash.
+
+- `kubectl port-forward <pod-name> <local-port>:<remote-port>`  
+  Redirige el puerto de un pod a un puerto local en tu máquina.
+
+## Información sobre deployments
+- `kubectl get deployments`  
+  Muestra los deployments en el clúster.
+
+- `kubectl describe deployment <deployment-name>`  
+  Muestra detalles sobre un deployment específico.
+
+## Configuración de Rollout
+- `kubectl rollout status deployment/<deployment-name>`  
+  Muestra el estado de un rollout de deployment.
+
+- `kubectl rollout undo deployment/<deployment-name>`  
+  Revierte un deployment al estado anterior.
+
+## Actualización de recursos
+- `kubectl set image deployment/<deployment-name> <container-name>=<image>`  
+  Actualiza la imagen de un contenedor en un deployment.
+
 # Distributed version of the Spring PetClinic Sample Application built with Spring Cloud 
 
 [![Build Status](https://github.com/spring-petclinic/spring-petclinic-microservices/actions/workflows/maven-build.yml/badge.svg)](https://github.com/spring-petclinic/spring-petclinic-microservices/actions/workflows/maven-build.yml)
