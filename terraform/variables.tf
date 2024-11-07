@@ -55,5 +55,5 @@ variable "acr_name" {
 variable "key_vault_name" {
   type        = string
   description = "Name of the Azure Key Vault"
-  default     = "my-keyvault"
+  default     = "divergenciakeyvault"
 }

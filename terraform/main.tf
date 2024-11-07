@@ -17,27 +17,29 @@ resource "azurerm_key_vault" "key_vault" {
   name                     = var.key_vault_name
   location                 = azurerm_resource_group.rg.location
   resource_group_name      = azurerm_resource_group.rg.name
-  tenant_id                = var.tenant_id # Usa el tenant_id desde una variable aquí
+  tenant_id                = var.tenant_id
   sku_name                 = "standard"
   purge_protection_enabled = true
 
   access_policy {
     tenant_id = var.tenant_id
-    object_id = azurerm_kubernetes_cluster.aks_cluster.identity[0].principal_id
+    object_id = "7c8ab49a-20e5-46a5-a434-3ad3ec71335c"
 
-    secret_permissions = ["get", "list"]
+    secret_permissions = ["Get", "List"]
   }
 
   tags = {
     environment = "Dev"
   }
+
+   depends_on = [azurerm_kubernetes_cluster.aks_cluster]
 }
 
 # Key Vault data to retrieve secrets
 data "azurerm_key_vault_secret" "tenant_id" {
   name         = "tenant-id"
   key_vault_id = azurerm_key_vault.key_vault.id
-  depends_on   = [azurerm_key_vault.key_vault] # Espera a que el Key Vault esté creado
+  depends_on   = [azurerm_key_vault.key_vault]
 }
 
 # AKS Cluster
